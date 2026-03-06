@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HTML Hub</title>
+  <style>
+    :root{--bg:#0f1724;--muted:#94a3b8;--gap:14px}
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial; margin:0; background:linear-gradient(180deg,#071022 0%, #081226 60%); color:#e6eef8; min-height:100vh}
+    header{display:flex;gap:12px;align-items:center;padding:18px 22px;border-bottom:1px solid rgba(255,255,255,0.03)}
+    .title{display:flex;flex-direction:column}
+    h1{margin:0;font-size:20px}
+    p.sub{margin:0;color:var(--muted);font-size:13px}
+    .controls{margin-left:auto;display:flex;gap:10px;align-items:center}
+    input.search{padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:inherit;min-width:300px}
+    button.btn{background:transparent;border:1px solid rgba(255,255,255,0.04);color:inherit;padding:8px 12px;border-radius:10px;cursor:pointer}
+    main{padding:20px}
+    .grid{display:grid;gap:var(--gap);grid-auto-rows:1fr}
+    .card{padding:14px;border-radius:12px;min-height:110px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 6px 16px rgba(8,10,15,0.6);border:1px solid rgba(255,255,255,0.03)}
+    .card h3{margin:0 0 6px 0;font-size:16px}
+    .card p{margin:0;color:var(--muted);font-size:13px}
+    .card .row{display:flex;gap:8px;align-items:center;margin-top:12px}
+    .card .row .open{flex:1;text-overflow:ellipsis;overflow:hidden}
+    .tiny{font-size:12px;color:var(--muted)}
+    a.btn{background:rgba(255,255,255,0.06);padding:6px 10px;border-radius:8px;text-decoration:none;color:inherit;border:1px solid rgba(255,255,255,0.03)}
+    footer{padding:16px 20px;color:var(--muted);font-size:13px;text-align:center}
+    @media (max-width:900px){input.search{min-width:180px}}@media (max-width:700px){input.search{display:block;width:100%}}
+
+    /* ---------- Override: force black text inside each card ---------- */
+    /* This overrides inline color values so all card text is black for readability */
+    .card,
+    .card h3,
+    .card p,
+    .card .open,
+    .card .tiny,
+    .card a.btn,
+    .card code {
+      color: #000 !important;
+    }
+    /* optional: make link buttons slightly lighter for contrast */
+    .card a.btn {
+      background: rgba(255,255,255,0.85);
+      border-color: rgba(0,0,0,0.06);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="title">
+      <h1>HTML Hub</h1>
+      <p class="sub">All types of HTML webpages!</p>
+    </div>
+
+    <div class="controls">
+      <input id="search" class="search" placeholder="Search titles, descriptions or URLs...">
+
+      <div style="display:flex;align-items:center;gap:8px">
+        <button id="decCols" class="btn">−</button>
+        <span id="colsLabel" class="tiny">4 cols</span>
+        <button id="incCols" class="btn">+</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!--
+      CARD TEMPLATE (example)
+      <div class="card" style="background:#7CC5FF; color:#061027">
+        <div>
+          <h3>Title</h3>
+          <p>Short description</p>
+        </div>
+        <div class="row">
+          <div class="open tiny">https://example.com</div>
+          <a class="btn" href="https://example.com" target="_blank" rel="noopener">Open</a>
+        </div>
+      </div>
+      Add card divs as direct children of the <section id="grid"> below.
+    -->
+
+    <section id="grid" class="grid" style="grid-template-columns:repeat(4,1fr)">
+
+      <div class="card" style="background:#7CC5FF; color:#061027">
+        <div>
+          <h3>Plain Text Converter</h3>
+          <p>Convert formatted text (bold, italics, lists) into clean plain-text while preserving readable structure.</p>
+        </div>
+        <div class="row">
+          <div class="open tiny">https://leaferd6712.github.io/plain-text-converter/</div>
+          <a class="btn" href="https://leaferd6712.github.io/plain-text-converter/" target="_blank" rel="noopener">Open</a>
+        </div>
+      </div>
+
+      <div class="card" style="background:#6BE7C3; color:#061027">
+        <div>
+          <h3>Class Timer</h3>
+          <p>A period timer that shows when your class finishes — compact countdown on the side of the screen.</p>
+        </div>
+        <div class="row">
+          <div class="open tiny">https://leaferd6712.github.io/class-timer/</div>
+          <a class="btn" href="https://leaferd6712.github.io/class-timer/" target="_blank" rel="noopener">Open</a>
+        </div>
+      </div>
+
+      <div class="card" style="background:#FF7AB6; color:#ffffff">
+        <div>
+          <h3>Max Screen Text Display</h3>
+          <p>Displays large, full-screen text for presentations, captions, or announcements.</p>
+        </div>
+        <div class="row">
+          <div class="open tiny">https://leaferd6712.github.io/max-screen-text-display/</div>
+          <a class="btn" href="https://leaferd6712.github.io/max-screen-text-display/" target="_blank" rel="noopener">Open</a>
+        </div>
+      </div>
+
+      <div class="card" style="background:#C68CFF; color:#ffffff">
+        <div>
+          <h3>Quick File Download</h3>
+          <p>Quick downloads for <code>.py</code>, <code>.html</code>, and <code>.yaml</code> files.</p>
+        </div>
+        <div class="row">
+          <div class="open tiny">https://leaferd6712.github.io/quick-file-download/</div>
+          <a class="btn" href="https://leaferd6712.github.io/quick-file-download/" target="_blank" rel="noopener">Open</a>
+        </div>
+      </div>
+
+      <div class="card" style="background:#FF9A6B; color:#061027">
+        <div>
+          <h3>Calculator</h3>
+          <p>Calculator Prank — a joke web calculator.</p>
+        </div>
+        <div class="row">
+          <div class="open tiny">https://leaferd6712.github.io/calculator/</div>
+          <a class="btn" href="https://leaferd6712.github.io/calculator/" target="_blank" rel="noopener">Open</a>
+        </div>
+      </div>
+
+      <div class="card" style="background:#7BD389; color:#061027">
+        <div>
+          <h3>Flashcard Maker</h3>
+          <p>Resizable flashcard maker — free and easy to use.</p>
+        </div>
+        <div class="row">
+          <div class="open tiny">https://leaferd6712.github.io/flash-card-maker/</div>
+          <a class="btn" href="https://leaferd6712.github.io/flash-card-maker/" target="_blank" rel="noopener">Open</a>
+        </div>
+      </div>
+
+      <div class="card" style="background:#FFD57A; color:#061027">
+        <div>
+          <h3>Night Clock</h3>
+          <p>Night clock showing background, current time, and temperature.</p>
+        </div>
+        <div class="row">
+          <div class="open tiny">https://leaferd6712.github.io/night-clock/</div>
+          <a class="btn" href="https://leaferd6712.github.io/night-clock/" target="_blank" rel="noopener">Open</a>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+
+
+  <script>
+    (function(){
+      const grid = document.getElementById('grid');
+      const searchInput = document.getElementById('search');
+      const incCols = document.getElementById('incCols');
+      const decCols = document.getElementById('decCols');
+      const colsLabel = document.getElementById('colsLabel');
+      let cols = 4;
+
+      function updateColsUI(){ grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`; colsLabel.textContent = `${cols} cols`; }
+      function matches(q, el){
+        const hay = (el.querySelector('h3')?.textContent || '') + ' ' + (el.querySelector('p')?.textContent || '') + ' ' + (el.querySelector('.open')?.textContent || '');
+        return hay.toLowerCase().includes(q);
+      }
+      function render(){
+        const q = searchInput.value.trim().toLowerCase();
+        Array.from(grid.children).forEach(el => { if(!q || matches(q, el)) el.style.display='flex'; else el.style.display='none'; });
+      }
+
+      searchInput.addEventListener('input', render);
+      incCols.addEventListener('click', ()=>{ cols = Math.min(8, cols+1); updateColsUI(); });
+      decCols.addEventListener('click', ()=>{ cols = Math.max(1, cols-1); updateColsUI(); });
+      updateColsUI();
+    })();
+  </script>
+</body>
+</html>
